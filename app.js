@@ -4,6 +4,7 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const connectToMongoDB = require('./dbConnection');
+const studentRoute = require('./routes/studentRoute');
 
 // Instance of express
 const app = express();
@@ -12,8 +13,11 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-// MongoDB connection
+// Connect to MongoDB
 connectToMongoDB();
+
+// Routes
+app.use('/', studentRoute);
 
 // Start server
 const PORT = process.env.PORT || 5000;
