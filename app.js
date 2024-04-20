@@ -11,7 +11,13 @@ const app = express();
 
 // Middleware
 app.use(express.json());
-app.use(cors());
+
+const corsOptions = {
+    origin: [
+      'https://student-management-xw21.onrender.com'
+    ] // Allow requests from this origin
+  };
+app.use(cors(corsOptions));
 
 // Connect to MongoDB
 connectToMongoDB();
