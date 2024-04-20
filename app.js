@@ -9,15 +9,17 @@ const studentRoute = require('./routes/studentRoute');
 // Instance of express
 const app = express();
 
-// Middleware
-app.use(express.json());
 
+// Middleware
 const corsOptions = {
     origin: [
-      'https://student-management-xw21.onrender.com'
-    ] // Allow requests from this origin
-  };
+        'https://student-management-xw21.onrender.com'
+    ] // Allow requests from these origins
+};
+
 app.use(cors(corsOptions));
+
+app.use(express.json());
 
 // Connect to MongoDB
 connectToMongoDB();
